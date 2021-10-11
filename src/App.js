@@ -1,10 +1,10 @@
-import {useState} from "react";
+import { useState } from "react";
 
 const drinkToCl = {
-  "beer": 35,
-  "wine": 15,
-  "liquor": 4
-}
+  beer: 35,
+  wine: 15,
+  liquor: 4,
+};
 
 function App() {
   const [weight, setWeight] = useState(80);
@@ -17,39 +17,66 @@ function App() {
     const bodyWeight = weight * 1000;
     const R = sex === "female" ? 0.55 : 0.68;
     const BAC = 0.129;
-    const alcoholConsumed = (bodyWeight * R) * (BAC / 100);
+    const alcoholConsumed = bodyWeight * R * (BAC / 100);
 
     const numerOfDrinks = alcoholConsumed / 14;
-    setGoal(Math.round(numerOfDrinks))
-  }
+    setGoal(Math.round(numerOfDrinks));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     calculateBac();
-  }
+  };
 
   return (
     <article>
       <header className="flex flex-col justify-center items-center py-12">
         <h1 className="text-5xl mb-4 font-medium">Balmers Peak Calculator</h1>
-        <p className="text-xl">"A BAC between 0.129‰ and 0.138‰ confers superhuman programming ability"</p>
-        <a href="https://xkcd.com/323/" className="text-xs cursor-pointer hover:underline">source</a>
+        <p className="text-xl">
+          "A BAC between 0.129‰ and 0.138‰ confers superhuman programming
+          ability"
+        </p>
+        <a
+          href="https://xkcd.com/323/"
+          className="text-xs cursor-pointer hover:underline"
+        >
+          source
+        </a>
       </header>
       <main>
         {goal ? (
           <div>
-            <h2 className="text-center text-2xl font-medium mb-4">You will need to drink
-            <span className="underline cursor-pointer relative">
-              <span> {goal} glasses of {drink}</span>
-              <span className="opacity-0 transition duration-500 hover:opacity-100 absolute text-lg left-0 top-0 w-48 h-12">
-                <span className="absolute top-8 bg-white p-2 border rounded-md w-64 left-0">This means {drinkToCl[drink] * goal}cl of {drink}</span>
-              </span>
-            </span> to reach the peak!</h2>
+            <h2 className="text-center text-2xl font-medium mb-4">
+              You will need to drink
+              <span className="underline cursor-pointer relative">
+                <span>
+                  {" "}
+                  {goal} glasses of {drink}
+                </span>
+                <span className="opacity-0 transition duration-500 hover:opacity-100 absolute text-lg left-0 top-0 w-48 h-12">
+                  <span className="absolute top-8 bg-white p-2 border rounded-md w-64 left-0">
+                    This means {drinkToCl[drink] * goal}cl of {drink}
+                  </span>
+                </span>
+              </span>{" "}
+              to reach the peak!
+            </h2>
+            <div className="madCode">
+              <h3>I mean to code like: </h3>
+              <img
+                src="https://i2.wp.com/allhtaccess.info/wp-content/uploads/2018/03/programming.gif?fit=1281%2C716&ssl=1"
+              />
+            </div>
           </div>
-         ) : null}
-        <form className="flex flex-col justify-center items-center" onSubmit={handleSubmit}>
+        ) : null}
+        <form
+          className="flex flex-col justify-center items-center"
+          onSubmit={handleSubmit}
+        >
           <div className="flex flex-col justify-center items-center">
-            <label for="weight" className="text-xl">What's your weight? (kg)</label>
+            <label for="weight" className="text-xl">
+              What's your weight? (kg)
+            </label>
             <input
               type="number"
               id="weight"
@@ -130,7 +157,9 @@ function App() {
             </div>
           </div>
 
-          <button className="px-8 py-4 rounded-full bg-blue-600 uppercase text-white text-md mt-8 font-semibold">Calculate</button>
+          <button className="px-8 py-4 rounded-full bg-blue-600 uppercase text-white text-md mt-8 font-semibold">
+            Calculate
+          </button>
         </form>
       </main>
     </article>
