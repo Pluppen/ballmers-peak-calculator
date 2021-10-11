@@ -31,7 +31,7 @@ function App() {
   return (
     <article>
       <header className="flex flex-col justify-center items-center py-12">
-        <h1 className="text-5xl mb-4 font-medium">Balmers Peak Calculator</h1>
+        <h1 className="text-5xl mb-4 font-medium">Ballmers Peak Calculator</h1>
         <p className="text-xl">
           "A BAC between 0.129‰ and 0.138‰ confers superhuman programming
           ability"
