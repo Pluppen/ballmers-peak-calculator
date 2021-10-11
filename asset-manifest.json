@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/balmers-peak-calculator/static/css/main.a6a69cdc.chunk.css",
-    "main.js": "/balmers-peak-calculator/static/js/main.64ab0a7b.chunk.js",
-    "main.js.map": "/balmers-peak-calculator/static/js/main.64ab0a7b.chunk.js.map",
+    "main.js": "/balmers-peak-calculator/static/js/main.011d91b5.chunk.js",
+    "main.js.map": "/balmers-peak-calculator/static/js/main.011d91b5.chunk.js.map",
     "runtime-main.js": "/balmers-peak-calculator/static/js/runtime-main.cc934fda.js",
     "runtime-main.js.map": "/balmers-peak-calculator/static/js/runtime-main.cc934fda.js.map",
     "static/js/2.0984d612.chunk.js": "/balmers-peak-calculator/static/js/2.0984d612.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.cc934fda.js",
     "static/js/2.0984d612.chunk.js",
     "static/css/main.a6a69cdc.chunk.css",
-    "static/js/main.64ab0a7b.chunk.js"
+    "static/js/main.011d91b5.chunk.js"
   ]
 }
