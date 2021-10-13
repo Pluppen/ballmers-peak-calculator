@@ -35,7 +35,7 @@ function App() {
                     Ballmers Peak Calculator
                 </h1>
                 <p className="text-xl">
-                    "A BAC between 0.129‰ and 0.138‰ confers superhuman programming
+                    "A BAC between 0.129% and 0.138% confers superhuman programming
                     ability"
                 </p>
                 <a
