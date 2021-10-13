@@ -12,15 +12,15 @@ function App() {
     const [drink, setDrink] = useState(null);
 
     const [goal, setGoal] = useState(null);
+    const [targetBAC, setTargetBAC] = useState(0.075);
 
     const calculateBac = () => {
         const bodyWeight = weight * 1000;
         const R = sex === "female" ? 0.55 : 0.68;
-        const BAC = 0.129;
-        const alcoholConsumed = bodyWeight * R * (BAC / 100);
+        const alcoholConsumed = bodyWeight * R * (targetBAC / 100);
 
         const numerOfDrinks = alcoholConsumed / 14;
-        setGoal(Math.round(numerOfDrinks));
+        setGoal(numerOfDrinks);
     };
 
     const handleSubmit = (e) => {
@@ -49,15 +49,15 @@ function App() {
                 {goal ? (
                     <div>
                         <h2 className="text-center text-2xl font-medium mb-4">
-                            You will need to drink
+                            You will need to drink around
                             <span className="underline cursor-pointer relative">
                                 <span>
                                     {" "}
-                                    {goal} glasses of {drink}
+                                    {Math.round(goal * 10) / 10} glasses of {drink}
                                 </span>
                                 <span className="opacity-0 transition duration-500 hover:opacity-100 absolute text-lg left-0 top-0 w-48 h-12">
                                     <span className="absolute top-8 bg-white p-2 border rounded-md w-64 left-0">
-                                        This means {drinkToCl[drink] * goal}cl of{" "}
+                                        More exactly {Math.round(drinkToCl[drink] * goal)}cl of{" "}
                                         {drink}
                                     </span>
                                 </span>
@@ -83,6 +83,18 @@ function App() {
                             value={weight}
                             onChange={(e) => setWeight(e.target.value)}
                         />
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center">
+                        <label for="weight" className="text-xl">
+                            Select your BAC target
+                        </label>
+                        <select value={targetBAC} onChange={(e) => setTargetBAC(e.target.value)} className="px-6 py-3 my-4 border rounded-xl">
+                            <option value={0.075}>The Scientific Way (0.075%)</option>
+                            <option value={0.129}>The Light Ballmer Way (0.129%)</option>
+                            <option value={0.133}>The Medium Ballmer Way (0.133%)</option>
+                            <option value={0.138}>The Strong Ballmer Way (0.138%)</option>
+                        </select>
                     </div>
 
                     <p className="mt-4 mb-4 text-xl">What's your sex?</p>
