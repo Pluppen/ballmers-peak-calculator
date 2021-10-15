@@ -15,11 +15,6 @@ To get started you can look at the project's current issues. Some issues may be 
  Beginner issues - issues which should only require a few lines of code, and a test or two.
  Help wanted issues - issues which should be a bit more involved than beginner issues.
 
-After you've found the issue you want to work it's time to get to work.
-At this point, you're ready to make your changes! Feel free to ask for help; everyone is a beginner at first :smile_cat:
-When you're done with your changes it's time to submit a pull request.
-Here are a couple of beginner tutorials on pull requests: http://makeapullrequest.com/ and http://www.firsttimersonly.com/
-
 # Getting started
 ### How to submit a contribution
 
