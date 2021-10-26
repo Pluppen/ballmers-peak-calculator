@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import githubSrc from "./github-button.jpg";
+
 const drinkToCl = {
     beer: 35,
     wine: 15,
@@ -30,6 +32,9 @@ function App() {
 
     return (
         <article>
+            <a href="https://github.com/Pluppen/ballmers-peak-calculator" target="_blank" rel="noreferrer">
+                <img width="120" src={githubSrc} alt="github button" />
+            </a>
             <header className="flex flex-col justify-center items-center py-12">
                 <h1 className="text-5xl mb-4 font-medium">
                     Ballmers Peak Calculator
