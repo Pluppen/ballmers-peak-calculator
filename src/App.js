@@ -12,17 +12,23 @@ function App() {
     const [weight, setWeight] = useState(80);
     const [sex, setSex] = useState(null);
     const [drink, setDrink] = useState(null);
-
+    const [hourly, setHourly] = useState(null);
     const [goal, setGoal] = useState(null);
     const [targetBAC, setTargetBAC] = useState(0.075);
 
     const calculateBac = () => {
         const bodyWeight = weight * 1000;
         const R = sex === "female" ? 0.55 : 0.68;
-        const alcoholConsumed = bodyWeight * R * (targetBAC / 100);
+        const alcoholConsumed = bodyWeight * R * ((targetBAC + 0.032)/ 100);
+        
+        const addedBACPerHour = (14/(bodyWeight*R)) *100
+        const burnedBACPerHour = 0.016
+        const neededDrinksPerHour = burnedBACPerHour/addedBACPerHour
 
-        const numerOfDrinks = alcoholConsumed / 14;
-        setGoal(numerOfDrinks);
+
+        const numberOfDrinks = alcoholConsumed / 14;
+        setHourly(neededDrinksPerHour);
+        setGoal(numberOfDrinks);
     };
 
     const handleSubmit = (e) => {
@@ -67,7 +73,10 @@ function App() {
                                     </span>
                                 </span>
                             </span>{" "}
-                            to reach the peak!
+                            in 2 hours to reach the peak!
+                        </h2>
+                        <h2 className="text-center text-xl font-medium mb-4">
+                            You'll then need {Math.round(hourly)} drink per hour to maintain the peak.
                         </h2>
                     </div>
                 ) : null}
