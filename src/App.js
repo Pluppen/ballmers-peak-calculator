@@ -4,7 +4,7 @@ import githubSrc from "./github-button.jpg";
 
 const drinkToCl = {
     beer: 33,
-    wine: 12.5,
+    wine: 15,
     liquor: 4,
 };
 
