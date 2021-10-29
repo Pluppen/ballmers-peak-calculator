@@ -3,8 +3,8 @@ import { useState } from "react";
 import githubSrc from "./github-button.jpg";
 
 const drinkToCl = {
-    beer: 35,
-    wine: 15,
+    beer: 33,
+    wine: 12.5,
     liquor: 4,
 };
 
