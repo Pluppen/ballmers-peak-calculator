@@ -10,6 +10,7 @@ const drinkToCl = {
 
 function App() {
     const [weight, setWeight] = useState(80);
+    const [timeWindow, setTimeWindow] = useState(1);
     const [sex, setSex] = useState(null);
     const [drink, setDrink] = useState(null);
     const [hourly, setHourly] = useState(null);
@@ -19,7 +20,7 @@ function App() {
     const calculateBac = () => {
         const bodyWeight = weight * 1000;
         const R = sex === "female" ? 0.55 : 0.68;
-        const alcoholConsumed = bodyWeight * R * ((targetBAC + 0.032)/ 100);
+        const alcoholConsumed = bodyWeight * R * ((targetBAC + (0.016*timeWindow))/ 100);
         
         const addedBACPerHour = (14/(bodyWeight*R)) *100
         const burnedBACPerHour = 0.016
@@ -73,7 +74,7 @@ function App() {
                                     </span>
                                 </span>
                             </span>{" "}
-                            in 2 hours to reach the peak!
+                            in {timeWindow} hour(s) to reach the peak!
                         </h2>
                         <h2 className="text-center text-xl font-medium mb-4">
                             You'll then need {Math.round(hourly)} drink per hour to maintain the peak.
@@ -84,8 +85,23 @@ function App() {
                     className="flex flex-col justify-center items-center"
                     onSubmit={handleSubmit}
                 >
+
                     <div className="flex flex-col justify-center items-center">
-                        <label for="weight" className="text-xl">
+                        <label for="hoursToPeak" className="text-xl">
+                            How many hours until peak time?
+                        </label>
+                        <select value={timeWindow} onChange={(e) => setTimeWindow(e.target.value)} className="px-6 py-3 my-4 border rounded-xl">
+                            <option value={1}>1 hour</option>
+                            <option value={2}>2 hours</option>
+                            <option value={3}>3 hours</option>
+                            <option value={4}>4 hours</option>
+                        </select>
+                    </div>
+
+                   
+
+                    <div className="flex flex-col justify-center items-center">
+                        <label for="wight" className="text-xl">
                             What's your weight? (kg)
                         </label>
                         <input
