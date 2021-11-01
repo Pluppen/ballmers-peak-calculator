@@ -11,8 +11,8 @@ const drinkToCl = {
 function App() {
     const [weight, setWeight] = useState(80);
     const [timeWindow, setTimeWindow] = useState(1);
-    const [sex, setSex] = useState(null);
-    const [drink, setDrink] = useState(null);
+    const [sex, setSex] = useState("female");
+    const [drink, setDrink] = useState("beer");
     const [hourly, setHourly] = useState(null);
     const [goal, setGoal] = useState(null);
     const [targetBAC, setTargetBAC] = useState(0.075);
@@ -20,8 +20,8 @@ function App() {
     const calculateBac = () => {
         const bodyWeight = weight * 1000;
         const R = sex === "female" ? 0.55 : 0.68;
-        const alcoholConsumed = bodyWeight * R * ((targetBAC + (0.016*timeWindow))/ 100);
-        
+        const alcoholConsumed = bodyWeight * R * ((parseFloat(targetBAC) + (0.016*parseInt(timeWindow)))/ 100);
+
         const addedBACPerHour = (14/(bodyWeight*R)) *100
         const burnedBACPerHour = 0.016
         const neededDrinksPerHour = burnedBACPerHour/addedBACPerHour
@@ -91,14 +91,14 @@ function App() {
                             How many hours until peak time?
                         </label>
                         <select value={timeWindow} onChange={(e) => setTimeWindow(e.target.value)} className="px-6 py-3 my-4 border rounded-xl">
-                            <option value={1}>1 hour</option>
-                            <option value={2}>2 hours</option>
-                            <option value={3}>3 hours</option>
-                            <option value={4}>4 hours</option>
+                            <option value="1">1 hour</option>
+                            <option value="2">2 hours</option>
+                            <option value="3">3 hours</option>
+                            <option value="4">4 hours</option>
                         </select>
                     </div>
 
-                   
+
 
                     <div className="flex flex-col justify-center items-center">
                         <label for="wight" className="text-xl">
@@ -202,11 +202,11 @@ function App() {
                 </form>
             </main>
             <footer className="flex flex-col justify-center items-center py-12">
-               
+
                 <p className="text-m">
                     Disclaimer - the above BAC result is not a good indication on if it's safe to drive or operate heavy machinery. Drink with caution.
                 </p>
-            
+
             </footer>
         </article>
     );
