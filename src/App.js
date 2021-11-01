@@ -201,6 +201,13 @@ function App() {
                     </button>
                 </form>
             </main>
+            <footer className="flex flex-col justify-center items-center py-12">
+               
+                <p className="text-m">
+                    Disclaimer - the above BAC result is not a good indication on if it's safe to drive or operate heavy machinery. Drink with caution.
+                </p>
+            
+            </footer>
         </article>
     );
 }
