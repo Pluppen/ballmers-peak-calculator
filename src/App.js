@@ -1,12 +1,15 @@
 import { useState } from "react";
 
 import githubSrc from "./github-button.jpg";
+import MetaTags from 'react-meta-tags';
 
 const drinkToCl = {
     beer: 33,
     wine: 15,
     liquor: 4,
 };
+
+const HOUR_IN_MILLISECONDS = 36000000;
 
 function App() {
     const [weight, setWeight] = useState(80);
@@ -16,6 +19,7 @@ function App() {
     const [hourly, setHourly] = useState(null);
     const [goal, setGoal] = useState(null);
     const [targetBAC, setTargetBAC] = useState(0.075);
+    const [anotherPour, setAnotherPour] = useState(false);
 
     const calculateBac = () => {
         const bodyWeight = weight * 1000;
@@ -34,11 +38,37 @@ function App() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        clearInterval();
         calculateBac();
+    };
+
+    const drinkAlert = () => {
+        document.getElementById("notification-sound").play();
+        setAnotherPour(true);
+    };
+
+    const startDrinkTimer = () => {
+        drinkAlert();
+        const peakInterval = setInterval(() => {
+            drinkAlert();
+        }, (HOUR_IN_MILLISECONDS * timeWindow) / (goal - 1)); // -1 Since the first drink will be poured directly
+
+        // Used for maintainment drinking
+        // Will wait until peak is reached then start maintaining timer.
+        setTimeout(() => {
+            clearInterval(peakInterval);
+            setInterval(() => drinkAlert(), HOUR_IN_MILLISECONDS / hourly)
+        }, HOUR_IN_MILLISECONDS * timeWindow)
     };
 
     return (
         <article>
+            <MetaTags>
+                <title>{anotherPour ? "Time for another pour!" : "Balmers Peak Calculator"}</title>
+            </MetaTags>
+            <audio id="notification-sound">
+                <source src="/ballmers-peak-calculator/notification-sound.mp3" />
+            </audio>
             <a href="https://github.com/Pluppen/ballmers-peak-calculator" target="_blank" rel="noreferrer">
                 <img width="120" src={githubSrc} alt="github button" />
             </a>
@@ -59,7 +89,7 @@ function App() {
             </header>
             <main>
                 {goal ? (
-                    <div>
+                    <div className="flex flex-col justify-center items-center">
                         <h2 className="text-center text-2xl font-medium mb-4">
                             You will need to drink around
                             <span className="underline cursor-pointer relative">
@@ -74,11 +104,14 @@ function App() {
                                     </span>
                                 </span>
                             </span>{" "}
-                            in {timeWindow} hour(s) to reach the peak!
+                            in {timeWindow} hour(s) to reach the peak.
                         </h2>
                         <h2 className="text-center text-xl font-medium mb-4">
                             You'll then need {Math.round(hourly)} drink per hour to maintain the peak.
                         </h2>
+                        <button className="px-6 py-3 rounded-full border border-blue-600 uppercase text-blue-600 text-md mb-8 font-semibold hover:bg-blue-100 transition duration-400" onClick={startDrinkTimer}>
+                            Start Timer
+                        </button>
                     </div>
                 ) : null}
                 <form
@@ -208,6 +241,10 @@ function App() {
                 </p>
 
             </footer>
+            <div className={"flex flex-col justify-center items-center fixed top-0 left-0 w-full h-full bg-white px-4 " + (anotherPour ? "block" : "hidden")}>
+                <h2 className="text-6xl uppercase font-bold">Time for another pour 🍻</h2>
+                <button onClick={() => setAnotherPour(false)} className="mt-8 px-8 py-4 uppercase bg-blue-600 text-white font-bold shadow-lg border rounded-full">The drink has been poured ✅</button>
+            </div>
         </article>
     );
 }
