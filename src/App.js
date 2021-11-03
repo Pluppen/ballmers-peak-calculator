@@ -64,7 +64,7 @@ function App() {
     return (
         <article>
             <MetaTags>
-                <title>{anotherPour ? "Time for another pour!" : "Balmers Peak Calculator"}</title>
+                <title>{anotherPour ? "Time for another pour!" : "Ballmers Peak Calculator"}</title>
             </MetaTags>
             <audio id="notification-sound">
                 <source src="/ballmers-peak-calculator/notification-sound.mp3" />
