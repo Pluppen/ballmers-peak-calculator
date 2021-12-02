@@ -134,7 +134,7 @@ function App() {
 
 
                     <div className="flex flex-col justify-center items-center">
-                        <label for="wight" className="text-xl">
+                        <label htmlFor="wight" className="text-xl">
                             What's your weight? (kg)
                         </label>
                         <input
@@ -149,7 +149,7 @@ function App() {
                     </div>
 
                     <div className="flex flex-col justify-center items-center">
-                        <label for="weight" className="text-xl">
+                        <label htmlFor="weight" className="text-xl">
                             Select your BAC target
                         </label>
                         <select value={targetBAC} onChange={(e) => setTargetBAC(e.target.value)} className="px-6 py-3 my-4 border rounded-xl">
@@ -163,7 +163,7 @@ function App() {
                     <p className="mt-4 mb-4 text-xl">What's your sex?</p>
                     <div className="flex space-x-4">
                         <div>
-                            <label for="sexFemale">Female</label>
+                            <label htmlFor="sexFemale">Female</label>
                             <input
                                 className="ml-2"
                                 id="sexFemale"
@@ -175,7 +175,7 @@ function App() {
                             />
                         </div>
                         <div>
-                            <label for="sexMale">Male</label>
+                            <label htmlFor="sexMale">Male</label>
                             <input
                                 name="sex"
                                 id="sexMale"
@@ -191,7 +191,7 @@ function App() {
                     <p className="mt-8 mb-4 text-xl">What's your preferred drink?</p>
                     <div className="flex space-x-4">
                         <div>
-                            <label for="drinkBeer">🍺 Beer (5% Alcohol)</label>
+                            <label htmlFor="drinkBeer">🍺 Beer (5% Alcohol)</label>
                             <input
                                 className="ml-2"
                                 id="drinkBeer"
@@ -203,7 +203,7 @@ function App() {
                             />
                         </div>
                         <div>
-                            <label for="drinkLiquor">🥃 Liquor (40% Alcohol)</label>
+                            <label htmlFor="drinkLiquor">🥃 Liquor (40% Alcohol)</label>
                             <input
                                 name="drink"
                                 id="drinkLiquor"
@@ -216,7 +216,7 @@ function App() {
                         </div>
 
                         <div>
-                            <label for="drinkWine">🍷 Wine (12% Alcohol)</label>
+                            <label htmlFor="drinkWine">🍷 Wine (12% Alcohol)</label>
                             <input
                                 name="drink"
                                 id="drinkWine"
