@@ -1,7 +1,11 @@
 import { useState } from "react";
 
 import githubSrc from "./github-button.jpg";
+import githubSrcDark from "./github_button_dark.png"
+import lightMode from "./light_mode.jpg";
+import darkMode from "./dark_mode.png";
 import MetaTags from 'react-meta-tags';
+import './app.css'
 
 const drinkToCl = {
     beer: 33,
@@ -12,6 +16,7 @@ const drinkToCl = {
 const HOUR_IN_MILLISECONDS = 36000000;
 
 function App() {
+    const [mode, setMode] = useState("light");
     const [weight, setWeight] = useState(80);
     const [timeWindow, setTimeWindow] = useState(1);
     const [sex, setSex] = useState("female");
@@ -40,6 +45,12 @@ function App() {
         e.preventDefault();
         clearInterval();
         calculateBac();
+
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        })
     };
 
     const drinkAlert = () => {
@@ -61,8 +72,13 @@ function App() {
         }, HOUR_IN_MILLISECONDS * timeWindow)
     };
 
+    const handleModeChange = () => {
+        mode === 'light' ? setMode('dark') : setMode('light');
+        console.log(mode);
+    }
+
     return (
-        <article>
+        <article className={mode === 'light' ? 'light-mode' : 'dark-mode'}>
             <MetaTags>
                 <title>{anotherPour ? "Time for another pour!" : "Ballmers Peak Calculator"}</title>
             </MetaTags>
@@ -70,7 +86,7 @@ function App() {
                 <source src="/ballmers-peak-calculator/notification-sound.mp3" />
             </audio>
             <a href="https://github.com/Pluppen/ballmers-peak-calculator" target="_blank" rel="noreferrer">
-                <img width="120" src={githubSrc} alt="github button" />
+                <img width="120" src={mode === 'light' ? githubSrc : githubSrcDark} alt="github button" />
             </a>
             <header className="flex flex-col justify-center items-center py-12">
                 <h1 className="text-5xl mb-4 font-medium">
@@ -87,6 +103,9 @@ function App() {
                     source
                 </a>
             </header>
+            <button className="dark-light-mode" onClick={handleModeChange} style={{ position: 'fixed', top: '20px', right: '20px'}}>
+                {mode === 'light' ? <img src={darkMode} alt="Dark Mode" width="20"/> : <img width="50" alt="Light Mode" src={lightMode} />}
+            </button>
             <main>
                 {goal ? (
                     <div className="flex flex-col justify-center items-center">
@@ -98,7 +117,7 @@ function App() {
                                     {Math.round(goal * 10) / 10} glasses of {drink}
                                 </span>
                                 <span className="opacity-0 transition duration-500 hover:opacity-100 absolute text-lg left-0 top-0 w-48 h-12">
-                                    <span className="absolute top-8 bg-white p-2 border rounded-md w-64 left-0">
+                                    <span className="absolute top-8 bg-white p-2 border rounded-md w-64 left-0 hover-span">
                                         More exactly {Math.round(drinkToCl[drink] * goal)}cl of{" "}
                                         {drink}
                                     </span>
@@ -241,7 +260,7 @@ function App() {
                 </p>
 
             </footer>
-            <div className={"flex flex-col justify-center items-center fixed top-0 left-0 w-full h-full bg-white px-4 " + (anotherPour ? "block" : "hidden")}>
+            <div className={"flex flex-col justify-center items-center fixed top-0 left-0 w-full h-full px-4 " + (anotherPour ? "block " : "hidden ") + (mode === 'light'?"bg-white":"bg-black")}>
                 <h2 className="text-6xl uppercase font-bold">Time for another pour 🍻</h2>
                 <button onClick={() => setAnotherPour(false)} className="mt-8 px-8 py-4 uppercase bg-blue-600 text-white font-bold shadow-lg border rounded-full">The drink has been poured ✅</button>
             </div>

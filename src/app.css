@@ -1,0 +1,27 @@
+.light-mode{
+    background-color: white;
+    color: black;
+}
+.dark-mode{
+    background-color: black;
+    color: white;
+}
+.light-mode select{
+    background-color: white;
+    color: black;
+}
+.dark-mode select{
+    background-color: black;
+    color: white;
+}
+.light-mode input{
+    background-color: white;
+    color: black;
+}
+.dark-mode input{
+    background-color: black;
+    color: white;
+}
+.dark-mode .hover-span{
+    background-color: black;
+}
