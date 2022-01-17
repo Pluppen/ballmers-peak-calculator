@@ -21,7 +21,8 @@
         "eject": "react-scripts eject",
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
-        "format": "prettier --write \"**/*.+(js|jsx|json|css|md|yaml)\""
+        "format": "prettier --write \"**/*.+(js|jsx|json|css|md|yaml)\"",
+        "prepare": "husky install"
     },
     "eslintConfig": {
         "extends": [
@@ -44,9 +45,11 @@
     },
     "devDependencies": {
         "autoprefixer": "^9.8.8",
+        "eslint": "^7.32.0",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-prettier": "^4.0.0",
-        "husky": "^7.0.2",
+        "eslint-plugin-react": "^7.28.0",
+        "husky": "^7.0.4",
         "lint-staged": "^11.2.3",
         "postcss": "^7.0.39",
         "prettier": "^2.4.1",
@@ -58,15 +61,13 @@
         }
     },
     "lint-staged": {
-        "lint-staged": {
-            "*.+(js|jsx)": [
-                "eslint --fix",
-                "git add"
-            ],
-            "*.+(json|css|md)": [
-                "prettier --write",
-                "git add"
-            ]
-        }
+        "*.+(js|jsx)": [
+            "eslint --fix",
+            "git add"
+        ],
+        "*.+(json|css|md)": [
+            "prettier --write",
+            "git add"
+        ]
     }
 }
