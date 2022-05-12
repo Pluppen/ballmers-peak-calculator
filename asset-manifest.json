@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/ballmers-peak-calculator/static/css/main.a8b15746.chunk.css",
-    "main.js": "/ballmers-peak-calculator/static/js/main.ba8f6464.chunk.js",
-    "main.js.map": "/ballmers-peak-calculator/static/js/main.ba8f6464.chunk.js.map",
+    "main.css": "/ballmers-peak-calculator/static/css/main.116c4c6f.chunk.css",
+    "main.js": "/ballmers-peak-calculator/static/js/main.bb6ecb1c.chunk.js",
+    "main.js.map": "/ballmers-peak-calculator/static/js/main.bb6ecb1c.chunk.js.map",
     "runtime-main.js": "/ballmers-peak-calculator/static/js/runtime-main.c9f92192.js",
     "runtime-main.js.map": "/ballmers-peak-calculator/static/js/runtime-main.c9f92192.js.map",
     "static/js/2.ff49edb0.chunk.js": "/ballmers-peak-calculator/static/js/2.ff49edb0.chunk.js",
     "static/js/2.ff49edb0.chunk.js.map": "/ballmers-peak-calculator/static/js/2.ff49edb0.chunk.js.map",
     "index.html": "/ballmers-peak-calculator/index.html",
-    "static/css/main.a8b15746.chunk.css.map": "/ballmers-peak-calculator/static/css/main.a8b15746.chunk.css.map",
+    "static/css/main.116c4c6f.chunk.css.map": "/ballmers-peak-calculator/static/css/main.116c4c6f.chunk.css.map",
     "static/js/2.ff49edb0.chunk.js.LICENSE.txt": "/ballmers-peak-calculator/static/js/2.ff49edb0.chunk.js.LICENSE.txt",
     "static/media/github-button.849f97db.jpg": "/ballmers-peak-calculator/static/media/github-button.849f97db.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.c9f92192.js",
     "static/js/2.ff49edb0.chunk.js",
-    "static/css/main.a8b15746.chunk.css",
-    "static/js/main.ba8f6464.chunk.js"
+    "static/css/main.116c4c6f.chunk.css",
+    "static/js/main.bb6ecb1c.chunk.js"
   ]
 }
