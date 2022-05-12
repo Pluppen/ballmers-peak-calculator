@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import githubSrc from "./github-button.jpg";
 import MetaTags from 'react-meta-tags';
+
+
 
 const drinkToCl = {
     beer: 33,
@@ -20,7 +22,23 @@ function App() {
     const [goal, setGoal] = useState(null);
     const [targetBAC, setTargetBAC] = useState(0.075);
     const [anotherPour, setAnotherPour] = useState(false);
+    // appears when timer starts
+    const [timerOn, setTimerOn] = useState(false)
+    const [seconds, setSeconds] = useState(0)
 
+    let maxTime;
+    // starts counting time since timer began counting
+    useEffect(() => {
+        let interval = null;
+        setTimerOn(true)
+        timerOn ? interval = setInterval(() => {
+            setSeconds(seconds => seconds+1)
+        }, 1000) : clearInterval(interval);
+        return () => clearInterval(interval);
+    }, [timerOn, seconds])
+
+    maxTime = 3600 * timeWindow
+    
     const calculateBac = () => {
         const bodyWeight = weight * 1000;
         const R = sex === "female" ? 0.55 : 0.68;
@@ -49,6 +67,7 @@ function App() {
 
     const startDrinkTimer = () => {
         drinkAlert();
+
         const peakInterval = setInterval(() => {
             drinkAlert();
         }, (HOUR_IN_MILLISECONDS * timeWindow) / (goal - 1)); // -1 Since the first drink will be poured directly
@@ -59,6 +78,7 @@ function App() {
             clearInterval(peakInterval);
             setInterval(() => drinkAlert(), HOUR_IN_MILLISECONDS / hourly)
         }, HOUR_IN_MILLISECONDS * timeWindow)
+
     };
 
     return (
@@ -244,6 +264,9 @@ function App() {
             <div className={"flex flex-col justify-center items-center fixed top-0 left-0 w-full h-full bg-white px-4 " + (anotherPour ? "block" : "hidden")}>
                 <h2 className="text-6xl uppercase font-bold">Time for another pour 🍻</h2>
                 <button onClick={() => setAnotherPour(false)} className="mt-8 px-8 py-4 uppercase bg-blue-600 text-white font-bold shadow-lg border rounded-full">The drink has been poured ✅</button>
+                <p className="cue" >Time elasped: {seconds} seconds</p>
+                <progress max={maxTime} value={seconds}></progress>
+
             </div>
         </article>
     );

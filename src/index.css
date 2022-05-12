@@ -8,3 +8,38 @@
     margin: auto;
     margin-bottom: 4rem;
 }
+
+.cue {
+    margin-top: 2em;
+}
+
+progress {
+    width: 250px;
+    height: 2em;
+    background-color: rgb(175, 175, 175);
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+progress::-webkit-progress-bar {
+    overflow: hidden;
+    border-radius: 1em;
+    background-color: rgb(175, 175, 175);
+}
+progress::-webkit-progress-value {
+    overflow: hidden;
+    border-radius: 1em;
+    background-color: rgb(0, 196, 33);
+
+}
+progress::-moz-progress-bar {
+    overflow: hidden;
+    border-radius: 1em;
+    background-color: rgb(175, 175, 175);
+    
+
+}
+
